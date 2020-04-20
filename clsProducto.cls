@@ -24,4 +24,30 @@ Private Property Get IProducto_Identificador() As Long
     IProducto_Identificador = this.Identificador
 End Property
 
+Private Property Get IProducto_Nombre() As String
+    IProducto_Nombre = this.Nombre
+End Property
+
+Private Property Get IProducto_Imagen() As String
+    IProducto_Imagen = this.Imagen
+End Property
+
+Private Property Get IProducto_Estado() As String
+    IProducto_Estado = this.Estado
+End Property
+
+' Method Factory
+Public Sub FillData( _
+    ByRef Identificador As Long, _
+    ByRef Nombre As String, _
+    ByRef Imagen As String, _
+    ByRef Estado As String _
+    )
+    If Len(this.Nombre) = 0 Then
+        this.Identificador = Identificador
+        this.Nombre = Nombre
+        this.Imagen = Imagen
+        this.Estado = Estado
+    End If
+End Sub
 

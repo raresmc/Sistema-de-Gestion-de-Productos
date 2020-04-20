@@ -1,11 +1,10 @@
 Attribute VB_Name = "MóduloMain"
 Option Explicit
 '@Folder("SysProd")
-Sub Main()
-    Dim cod As IProducto
-    Set cod = New IProducto
+Public Sub Main()
+    Dim objProd As IProducto
+    Set objProd = ProductoFactory.Create("Producto1", "Ruta imagen", "Activo")
     
-    Dim nuevoId As Long
-    nuevoId = cod.Identificador
-    Debug.Print nuevoId
+    Debug.Print objProd.Identificador, objProd.Nombre, objProd.Imagen, objProd.Estado
+    
 End Sub

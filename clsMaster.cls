@@ -10,11 +10,12 @@ Attribute VB_Exposed = False
 Option Explicit
 '@Folder("SysProd.Repositories")
 
-Public Function IdMax(ByVal hoja As String, ByVal Columna As String) As Long
+'@Description("Genera numero de identificación unico")
+Public Function IdMax(ByVal hoja As String, ByVal columna As String) As Long
     Dim busca As Variant
     Dim rango As Range
     
-    Set rango = ThisWorkbook.Sheets(hoja).Range(Columna) ' Columna ID
+    Set rango = ThisWorkbook.Sheets(hoja).Range(columna) ' Columna ID
     Set busca = rango.Find(Application.WorksheetFunction.Max(rango), _
     LookIn:=xlValues, LookAt:=xlWhole)
     
@@ -23,7 +24,27 @@ Public Function IdMax(ByVal hoja As String, ByVal Columna As String) As Long
     Else
         IdMax = 1
     End If
-
 End Function
+
+'@Description("Retorna el numero de registros duplicados")
+'Public Function ValidarDuplicado( _
+'    ByVal hoja As String, _
+'    ByVal columna As String, _
+'    ByVal nombreProd _
+'    ) As Integer
+'
+'    Sheets(hoja).Activate
+'
+'    Dim cuenta As Integer
+'    cuenta = Application.CountIf(Range(columna), UCase(nombreProd))
+'
+'    ' Si el registro existe retornamos el numero de registros duplicados
+'    If cuenta > 0 Then
+'        MsgBox "Registro ya registrado"
+'        ValidarDuplicado = cuenta
+'    Else
+'        ValidarDuplicado = 0
+'    End If
+'End Function
 
 
